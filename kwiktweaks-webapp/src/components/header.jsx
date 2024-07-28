@@ -23,10 +23,10 @@ export default function Header() {
             </button>
             <div className="absolute hidden group-hover:block bg-gray-700 text-white shadow-lg py-2 transition-all duration-300 transform scale-95 group-hover:scale-100">
               <Link
-                href="#"
+                href="/audiotrim"
                 className="block px-4 py-2 hover:bg-gray-600 transition-colors duration-300"
               >
-                Suboption 1
+                Trim MP3
               </Link>
               <Link
                 href="#"
