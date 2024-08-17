@@ -1,5 +1,7 @@
 "use client";
 import React, { useState, useRef } from "react";
+import AudioPlayer from "react-h5-audio-player";
+import "react-h5-audio-player/lib/styles.css";
 
 export default function AudioSpeedAdjuster() {
   const [audioSrc, setAudioSrc] = useState(null);
@@ -157,12 +159,22 @@ export default function AudioSpeedAdjuster() {
               <h3 className="text-xl font-bold mb-2 text-gray-800">
                 Preview Modified Audio
               </h3>
-              <audio controls src={modifiedAudioUrl} className="w-full mb-4" />
-
+              <AudioPlayer
+                src={modifiedAudioUrl}
+                className="custom-audio-player"
+                autoPlay={false}
+                customAdditionalControls={[]}
+                customVolumeControls={["VOL"]}
+                style={{
+                  borderRadius: "8px",
+                  boxShadow:
+                    "0 8px 30px rgba(0, 0, 0, 0.15), 0 4px 15px rgba(0, 0, 0, 0.05)",
+                }}
+              />
               <a
                 href={modifiedAudioUrl}
                 download="modified_audio.wav"
-                className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                className="bg-purple-500 hover:bg-purple-700 text-white font-semibold py-3 px-6 rounded-lg focus:outline-none focus:ring-4 focus:ring-purple-300 transition-all duration-300 mt-4 inline-block"
               >
                 Download Modified Audio
               </a>

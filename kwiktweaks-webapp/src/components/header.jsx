@@ -6,7 +6,7 @@ import Select from "react-select";
 const optionsAudio = [
   { value: "/audiotrim", label: "Trim MP3" },
   { value: "/adjustspeed", label: "Adjust Speed" },
-  { value: "#", label: "Suboption 3" },
+  { value: "/mergeaudio", label: "Merge Audio" },
 ];
 
 const optionsPDF = [

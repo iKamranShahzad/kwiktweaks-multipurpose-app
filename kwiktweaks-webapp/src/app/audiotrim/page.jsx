@@ -1,5 +1,7 @@
 "use client";
 import React, { useState, useRef, useEffect } from "react";
+import AudioPlayer from "react-h5-audio-player";
+import "react-h5-audio-player/lib/styles.css";
 
 function AudioEditor() {
   const [audioSrc, setAudioSrc] = useState(null);
@@ -227,11 +229,22 @@ function AudioEditor() {
               <h3 className="text-xl font-bold mb-2 text-gray-800">
                 Trimmed Audio
               </h3>
-              <audio src={trimmedAudioSrc} controls className="w-full mb-4" />
+              <AudioPlayer
+                src={trimmedAudioSrc}
+                className="custom-audio-player"
+                autoPlay={false}
+                customAdditionalControls={[]}
+                customVolumeControls={["VOL"]}
+                style={{
+                  borderRadius: "8px",
+                  boxShadow:
+                    "0 8px 30px rgba(0, 0, 0, 0.15), 0 4px 15px rgba(0, 0, 0, 0.05)",
+                }}
+              />
               <a
                 href={trimmedAudioSrc}
                 download="trimmed_audio.wav"
-                className="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                className="bg-purple-500 hover:bg-purple-700 text-white font-semibold py-3 px-6 rounded-lg focus:outline-none focus:ring-4 focus:ring-purple-300 transition-all duration-300 mt-4 inline-block"
               >
                 Download Trimmed Audio
               </a>
