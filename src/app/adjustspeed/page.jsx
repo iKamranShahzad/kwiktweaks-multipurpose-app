@@ -99,10 +99,12 @@ export default function AudioSpeedAdjuster() {
   };
 
   return (
-    <div className="flex min-h-screen bg-white">
-      <div className="w-1/3 p-6 bg-black text-white shadow-lg flex flex-col justify-center">
-        <h2 className="text-3xl font-bold mb-4">Audio Speed Adjuster</h2>
-        <p className="text-lg">
+    <div className="flex flex-col md:flex-row min-h-screen bg-gray-100">
+      <div className="w-full md:w-1/3 p-6 bg-black text-white shadow-lg flex flex-col justify-center">
+        <h2 className="text-2xl md:text-3xl font-bold mb-4">
+          Audio Speed Adjuster
+        </h2>
+        <p className="text-base md:text-lg">
           Upload your audio file and adjust its speed to your preference. You
           can then preview and download the modified audio.
         </p>
@@ -112,7 +114,7 @@ export default function AudioSpeedAdjuster() {
         <div className="bg-white p-6 rounded-lg shadow-lg max-w-4xl w-full">
           <div className="mb-4">
             <label
-              className="block text-gray-700 text-sm font-bold mb-2"
+              className="block text-gray-700 text-sm md:text-base font-bold mb-2"
               htmlFor="audio-upload"
             >
               Upload Audio File
@@ -133,12 +135,12 @@ export default function AudioSpeedAdjuster() {
 
           {audioSrc && (
             <div className="mb-4">
-              <label className="block text-gray-700 text-sm font-bold mb-2">
+              <label className="block text-gray-700 text-sm md:text-base font-bold mb-2">
                 Adjust Speed
               </label>
-              <div className="flex items-center justify-between mb-4">
+              <div className="flex flex-col md:flex-row items-center justify-between mb-4 space-y-2 md:space-y-0 md:space-x-4">
                 <span className="text-gray-700 text-lg font-semibold">
-                  {speed}x&nbsp;
+                  {speed}x
                 </span>
                 <input
                   type="range"
@@ -147,7 +149,7 @@ export default function AudioSpeedAdjuster() {
                   step="0.1"
                   value={speed}
                   onChange={(e) => setSpeed(e.target.value)}
-                  className="w-full"
+                  className="w-full md:w-3/4"
                 />
               </div>
 

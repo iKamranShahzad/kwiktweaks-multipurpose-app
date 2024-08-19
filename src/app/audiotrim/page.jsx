@@ -131,17 +131,17 @@ function AudioEditor() {
   }
 
   return (
-    <div className="flex min-h-screen bg-gray-100">
-      <div className="w-1/3 p-6 bg-black text-white shadow-lg flex flex-col justify-center">
-        <h2 className="text-3xl font-bold mb-4">Audio Trimmer</h2>
-        <p className="text-lg">
+    <div className="flex flex-col min-h-screen bg-gray-100 md:flex-row">
+      <div className="w-full md:w-1/3 p-4 md:p-6 bg-black text-white shadow-lg flex flex-col justify-center">
+        <h2 className="text-2xl md:text-3xl font-bold mb-4">Audio Trimmer</h2>
+        <p className="text-base md:text-lg">
           This tool allows you to upload an audio file, play/pause it, seek
           within it, and trim it to a specified range. You can then download the
           trimmed audio.
         </p>
       </div>
-      <div className="flex-1 flex justify-center items-center p-6">
-        <div className="bg-white p-6 rounded-lg shadow-lg max-w-4xl w-full">
+      <div className="flex-1 flex justify-center items-center p-4 md:p-6">
+        <div className="bg-white p-4 md:p-6 rounded-lg shadow-lg w-full max-w-4xl">
           <div className="mb-4">
             <label
               className="block text-gray-700 text-sm font-bold mb-2"
@@ -192,7 +192,7 @@ function AudioEditor() {
                 <label className="block text-gray-700 text-sm font-bold mb-2">
                   Trim Range
                 </label>
-                <div className="flex items-center space-x-2">
+                <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-2">
                   <input
                     type="number"
                     value={startTime}
@@ -204,7 +204,7 @@ function AudioEditor() {
                         )
                       )
                     }
-                    className="shadow appearance-none border rounded w-24 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    className="shadow appearance-none border rounded w-full md:w-24 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   />
                   <span>to</span>
                   <input
@@ -218,7 +218,7 @@ function AudioEditor() {
                         )
                       )
                     }
-                    className="shadow appearance-none border rounded w-24 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    className="shadow appearance-none border rounded w-full md:w-24 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   />
                 </div>
               </div>

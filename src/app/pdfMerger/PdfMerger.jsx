@@ -40,11 +40,11 @@ export default function PdfMerger() {
   };
 
   return (
-    <div className="bg-white shadow-md rounded-lg p-6">
-      <div className="mb-6">
+    <div className="bg-white shadow-lg rounded-lg p-8 max-w-4xl mx-auto">
+      <div className="mb-8">
         <label
           htmlFor="pdf-upload"
-          className="block text-sm font-medium text-gray-700 mb-2"
+          className="block text-lg font-medium text-gray-700 mb-3"
         >
           Select PDF files to merge
         </label>
@@ -55,7 +55,7 @@ export default function PdfMerger() {
           onChange={handleFileChange}
           accept=".pdf"
           className="block w-full text-sm text-gray-500
-            file:mr-4 file:py-2 file:px-4
+            file:mr-4 file:py-3 file:px-4
             file:rounded-full file:border-0
             file:text-sm file:font-semibold
             file:bg-blue-50 file:text-blue-700
@@ -63,22 +63,22 @@ export default function PdfMerger() {
           "
         />
       </div>
-      <div className="flex justify-between items-center mb-6">
+      <div className="flex flex-col lg:flex-row justify-between items-center mb-8 gap-6">
         <button
           onClick={mergePdfs}
           disabled={pdfFiles.length === 0 || isLoading}
-          className={`px-4 py-2 rounded-md text-white font-semibold ${
+          className={`w-full lg:w-auto px-6 py-3 text-lg rounded-md font-semibold ${
             pdfFiles.length === 0 || isLoading
               ? "bg-gray-300 cursor-not-allowed"
               : "bg-blue-600 hover:bg-blue-700"
-          }`}
+          } text-white`}
         >
           {isLoading ? "Merging..." : "Merge PDFs"}
         </button>
         {mergedPdfUrl && (
           <button
             onClick={downloadMergedPdf}
-            className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700"
+            className="w-full lg:w-auto px-6 py-3 text-lg bg-green-600 text-white rounded-md hover:bg-green-700"
           >
             Download Merged PDF
           </button>

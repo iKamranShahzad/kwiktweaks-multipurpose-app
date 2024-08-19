@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { mergeAudioFiles } from "../../utils/mergeAudio";
 import AudioPlayer from "react-h5-audio-player";
-import "react-h5-audio-player/lib/styles.css"; // Import the styles
+import "react-h5-audio-player/lib/styles.css";
 
 export default function MergeAudioPage() {
   const [file1, setFile1] = useState(null);
@@ -24,13 +24,13 @@ export default function MergeAudioPage() {
   };
 
   return (
-    <div className="flex min-h-screen bg-gray-100">
+    <div className="flex flex-col lg:flex-row min-h-screen bg-gray-100">
       {/* Left Section */}
-      <div className="w-1/3 p-6 bg-black text-white shadow-lg flex flex-col justify-center transition-all duration-500">
-        <h2 className="text-4xl font-bold mb-4 transform hover:scale-105 transition-transform duration-300">
+      <div className="lg:w-1/3 p-6 bg-black text-white shadow-lg flex flex-col justify-center transition-all duration-500">
+        <h2 className="text-3xl md:text-4xl font-bold mb-4 transform hover:scale-105 transition-transform duration-300">
           Merge Audio Files
         </h2>
-        <p className="text-lg leading-relaxed opacity-90 hover:opacity-100 transition-opacity duration-300">
+        <p className="text-base md:text-lg leading-relaxed opacity-90 hover:opacity-100 transition-opacity duration-300">
           This tool allows you to merge two audio files into one. Simply upload
           the files and merge them with one click.
         </p>
@@ -38,10 +38,10 @@ export default function MergeAudioPage() {
 
       {/* Right Section */}
       <div className="flex-1 flex justify-center items-center p-6">
-        <div className="bg-white p-8 rounded-lg shadow-2xl max-w-4xl w-full transition-shadow duration-300 hover:shadow-xl">
+        <div className="bg-white p-6 md:p-8 rounded-lg shadow-2xl max-w-4xl w-full transition-shadow duration-300 hover:shadow-xl">
           <div className="mb-6">
             <label
-              className="block text-gray-700 text-sm font-bold mb-3 transition-all duration-300 hover:text-gray-900"
+              className="block text-gray-700 text-sm md:text-base font-bold mb-3 transition-all duration-300 hover:text-gray-900"
               htmlFor="file1"
             >
               Upload First Audio File
@@ -62,7 +62,7 @@ export default function MergeAudioPage() {
           </div>
           <div className="mb-6">
             <label
-              className="block text-gray-700 text-sm font-bold mb-3 transition-all duration-300 hover:text-gray-900"
+              className="block text-gray-700 text-sm md:text-base font-bold mb-3 transition-all duration-300 hover:text-gray-900"
               htmlFor="file2"
             >
               Upload Second Audio File
@@ -89,8 +89,8 @@ export default function MergeAudioPage() {
           </button>
 
           {mergedAudio && (
-            <div className="mt-10">
-              <h3 className="text-xl font-semibold mb-4 text-gray-800 transition-colors duration-300 hover:text-gray-900">
+            <div className="mt-6">
+              <h3 className="text-lg md:text-xl font-semibold mb-4 text-gray-800 transition-colors duration-300 hover:text-gray-900">
                 Merged Audio
               </h3>
               <AudioPlayer
@@ -105,7 +105,6 @@ export default function MergeAudioPage() {
                     "0 8px 30px rgba(0, 0, 0, 0.15), 0 4px 15px rgba(0, 0, 0, 0.05)",
                 }}
               />
-
               <a
                 href={mergedAudio}
                 download="merged_audio.wav"

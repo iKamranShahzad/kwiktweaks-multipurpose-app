@@ -18,18 +18,21 @@ const optionsPDF = [
 export default function Header() {
   return (
     <header className="bg-black text-white shadow-lg">
-      <div className="container mx-auto flex flex-row justify-between items-center p-4">
-        <Link href="/" className="text-3xl font-extrabold tracking-wider">
+      <div className="container mx-auto flex flex-wrap items-center justify-between p-4">
+        <Link
+          href="/"
+          className="text-3xl font-extrabold tracking-wider flex-shrink-0"
+        >
           <img
             src="./mainlogowhite.png"
             alt="KwikTweaks"
             className="w-36 h-auto transform hover:scale-110 transition-transform duration-300"
           />
         </Link>
-        <nav className="flex space-x-6">
+        <nav className="flex flex-wrap items-center gap-4 mt-4 md:mt-0">
           <Link
             href="/digitalSignature"
-            className="block px-5 py-2 bg-white bg-opacity-10 rounded-lg hover:bg-opacity-20 transition-all duration-300 ease-in-out transform hover:scale-105"
+            className="block px-4 py-2 bg-white bg-opacity-10 rounded-lg hover:bg-opacity-20 transition-all duration-300 ease-in-out transform hover:scale-105 text-center"
           >
             Digital Signature
           </Link>
@@ -37,7 +40,7 @@ export default function Header() {
           {/* Audio Tools Dropdown */}
           <Select
             options={optionsAudio}
-            className="w-40"
+            className="w-full md:w-44"
             classNamePrefix="select"
             placeholder="Audio Tools"
             menuPlacement="bottom"
@@ -74,7 +77,7 @@ export default function Header() {
           {/* PDF Tools Dropdown */}
           <Select
             options={optionsPDF}
-            className="w-40"
+            className="w-full md:w-44"
             classNamePrefix="select"
             placeholder="PDF Tools"
             menuPlacement="bottom"
