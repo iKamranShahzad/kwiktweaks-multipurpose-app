@@ -10,7 +10,7 @@ const optionsAudio = [
 ];
 
 const optionsPDF = [
-  { value: "#", label: "Suboption 1" },
+  { value: "/pdfMerger", label: "Merge PDFs" },
   { value: "#", label: "Suboption 2" },
   { value: "#", label: "Suboption 3" },
 ];
