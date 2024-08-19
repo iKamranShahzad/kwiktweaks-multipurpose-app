@@ -8,7 +8,9 @@ const SignatureCanvas = () => {
 
   const startDrawing = (e) => {
     e.preventDefault(); // Prevent default touch behavior
-    const { x, y } = handleMouseEvents(e);
+    const { x, y } = e.type.includes("touch")
+      ? handleTouchEvents(e)
+      : handleMouseEvents(e);
     setPaths((prevPaths) => [...prevPaths, [{ x, y }]]);
     setDrawing(true);
   };
@@ -16,7 +18,9 @@ const SignatureCanvas = () => {
   const draw = (e) => {
     e.preventDefault(); // Prevent default touch behavior
     if (!drawing) return;
-    const { x, y } = handleMouseEvents(e);
+    const { x, y } = e.type.includes("touch")
+      ? handleTouchEvents(e)
+      : handleMouseEvents(e);
     setPaths((prevPaths) => {
       const updatedPaths = [...prevPaths];
       updatedPaths[updatedPaths.length - 1].push({ x, y });
@@ -105,8 +109,8 @@ const SignatureCanvas = () => {
         <div className="bg-white p-4 md:p-6 rounded-lg shadow-lg max-w-full w-full">
           <canvas
             ref={canvasRef}
-            width={800} // Increase width
-            height={500} // Increase height
+            width={800}
+            height={500}
             className="border-2 border-black w-full h-auto"
             onMouseDown={startDrawing}
             onMouseMove={draw}
