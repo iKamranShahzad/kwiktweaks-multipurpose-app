@@ -18,4 +18,4 @@ npm install
 
 Contributions are always welcome!
 
-![LOGO](/kwiktweaks-webapp/public/mainlogowhite.png)
+![LOGO](/public/mainlogowhite.png)
