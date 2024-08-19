@@ -21,7 +21,7 @@ export default function Header() {
       <div className="container mx-auto flex flex-row justify-between items-center p-4">
         <Link href="/" className="text-3xl font-extrabold tracking-wider">
           <img
-            src="/mainlogowhite.png"
+            src="./mainlogowhite.png"
             alt="KwikTweaks"
             className="w-36 h-auto transform hover:scale-110 transition-transform duration-300"
           />
