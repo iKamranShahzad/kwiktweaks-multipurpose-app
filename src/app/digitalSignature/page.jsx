@@ -7,12 +7,14 @@ const SignatureCanvas = () => {
   const [paths, setPaths] = useState([]);
 
   const startDrawing = (e) => {
+    e.preventDefault(); // Prevent default touch behavior
     const { x, y } = handleMouseEvents(e);
     setPaths((prevPaths) => [...prevPaths, [{ x, y }]]);
     setDrawing(true);
   };
 
   const draw = (e) => {
+    e.preventDefault(); // Prevent default touch behavior
     if (!drawing) return;
     const { x, y } = handleMouseEvents(e);
     setPaths((prevPaths) => {
@@ -78,6 +80,16 @@ const SignatureCanvas = () => {
     return { x, y };
   };
 
+  const handleTouchEvents = (e) => {
+    const touch = e.touches[0];
+    const rect = canvasRef.current.getBoundingClientRect();
+    const scaleX = canvasRef.current.width / rect.width;
+    const scaleY = canvasRef.current.height / rect.height;
+    const x = (touch.clientX - rect.left) * scaleX;
+    const y = (touch.clientY - rect.top) * scaleY;
+    return { x, y };
+  };
+
   return (
     <div className="flex flex-col min-h-screen bg-gray-100 md:flex-row">
       <div className="w-full md:w-1/3 p-4 md:p-6 bg-black text-white shadow-lg flex flex-col justify-center">
@@ -100,6 +112,9 @@ const SignatureCanvas = () => {
             onMouseMove={draw}
             onMouseUp={stopDrawing}
             onMouseLeave={stopDrawing}
+            onTouchStart={startDrawing}
+            onTouchMove={draw}
+            onTouchEnd={stopDrawing}
           />
           <div className="mt-4 flex flex-col md:flex-row md:space-x-4 space-y-2 md:space-y-0">
             <button
