@@ -4,13 +4,13 @@ import Link from "next/link";
 import Select from "react-select";
 
 const optionsAudio = [
-  { value: "/audiotrim", label: "Trim MP3" },
-  { value: "/adjustspeed", label: "Adjust Speed" },
-  { value: "/mergeaudio", label: "Merge Audio" },
+  { value: "./audiotrim", label: "Trim MP3" },
+  { value: "./adjustspeed", label: "Adjust Speed" },
+  { value: "./mergeaudio", label: "Merge Audio" },
 ];
 
 const optionsPDF = [
-  { value: "/pdfMerger", label: "Merge PDFs" },
+  { value: "./pdfMerger", label: "Merge PDFs" },
   { value: "#", label: "Suboption 2" },
   { value: "#", label: "Suboption 3" },
 ];
