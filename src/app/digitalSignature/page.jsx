@@ -1,13 +1,33 @@
 "use client";
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 
 const SignatureCanvas = () => {
   const canvasRef = useRef(null);
   const [drawing, setDrawing] = useState(false);
   const [paths, setPaths] = useState([]);
 
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    const preventDefaultTouch = (e) => e.preventDefault();
+    canvas.addEventListener("touchstart", preventDefaultTouch, {
+      passive: false,
+    });
+    canvas.addEventListener("touchmove", preventDefaultTouch, {
+      passive: false,
+    });
+    canvas.addEventListener("touchend", preventDefaultTouch, {
+      passive: false,
+    });
+
+    return () => {
+      canvas.removeEventListener("touchstart", preventDefaultTouch);
+      canvas.removeEventListener("touchmove", preventDefaultTouch);
+      canvas.removeEventListener("touchend", preventDefaultTouch);
+    };
+  }, []);
+
   const startDrawing = (e) => {
-    e.preventDefault(); // Prevent default touch behavior
+    e.preventDefault();
     const { x, y } = e.type.includes("touch")
       ? handleTouchEvents(e)
       : handleMouseEvents(e);
@@ -16,7 +36,7 @@ const SignatureCanvas = () => {
   };
 
   const draw = (e) => {
-    e.preventDefault(); // Prevent default touch behavior
+    e.preventDefault();
     if (!drawing) return;
     const { x, y } = e.type.includes("touch")
       ? handleTouchEvents(e)
@@ -37,7 +57,7 @@ const SignatureCanvas = () => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.lineWidth = 3; // Set line width to make the signature bolder
+    ctx.lineWidth = 3;
 
     paths.forEach((path) => {
       if (path.length < 2) return;
@@ -111,7 +131,7 @@ const SignatureCanvas = () => {
             ref={canvasRef}
             width={800}
             height={500}
-            className="border-2 border-black w-full h-auto"
+            className="border-2 border-black w-full h-auto touch-none"
             onMouseDown={startDrawing}
             onMouseMove={draw}
             onMouseUp={stopDrawing}
