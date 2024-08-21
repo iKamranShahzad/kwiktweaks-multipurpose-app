@@ -24,7 +24,7 @@ export default function MergeAudioPage() {
   };
 
   return (
-    <div className="flex flex-col lg:flex-row min-h-screen bg-gray-100">
+    <div className="flex flex-col lg:flex-row min-h-screen bg-primary">
       {/* Left Section */}
       <div className="lg:w-1/3 p-6 bg-black text-white shadow-lg flex flex-col justify-center transition-all duration-500">
         <h2 className="text-3xl md:text-4xl font-bold mb-4 transform hover:scale-105 transition-transform duration-300">

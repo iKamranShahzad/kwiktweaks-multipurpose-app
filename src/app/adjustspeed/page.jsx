@@ -99,7 +99,7 @@ export default function AudioSpeedAdjuster() {
   };
 
   return (
-    <div className="flex flex-col md:flex-row min-h-screen bg-gray-100">
+    <div className="flex flex-col md:flex-row min-h-screen bg-primary">
       <div className="w-full md:w-1/3 p-6 bg-black text-white shadow-lg flex flex-col justify-center">
         <h2 className="text-2xl md:text-3xl font-bold mb-4">
           Audio Speed Adjuster
