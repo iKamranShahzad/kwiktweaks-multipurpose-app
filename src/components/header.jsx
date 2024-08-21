@@ -45,18 +45,22 @@ export default function Header() {
   }, [pathname]);
 
   const handleAudioChange = (selectedOption) => {
-    setSelectedAudio(selectedOption);
-    if (selectedOption && selectedOption.value !== "#") {
-      setLoading(true); // Set loading to true when navigating to a new page
-      router.push(selectedOption.value);
+    if (selectedOption && selectedOption.value !== pathname) {
+      setSelectedAudio(selectedOption);
+      if (selectedOption.value !== "#") {
+        setLoading(true); // Set loading to true when navigating to a new page
+        router.push(selectedOption.value);
+      }
     }
   };
 
   const handlePDFChange = (selectedOption) => {
-    setSelectedPDF(selectedOption);
-    if (selectedOption && selectedOption.value !== "#") {
-      setLoading(true); // Set loading to true when navigating to a new page
-      router.push(selectedOption.value);
+    if (selectedOption && selectedOption.value !== pathname) {
+      setSelectedPDF(selectedOption);
+      if (selectedOption.value !== "#") {
+        setLoading(true); // Set loading to true when navigating to a new page
+        router.push(selectedOption.value);
+      }
     }
   };
 
