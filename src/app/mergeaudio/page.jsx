@@ -24,24 +24,31 @@ export default function MergeAudioPage() {
   };
 
   return (
-    <div className="flex flex-col lg:flex-row min-h-screen bg-primary">
+    <div className="flex flex-col min-h-screen bg-primary md:flex-row">
       {/* Left Section */}
-      <div className="lg:w-1/3 p-6 bg-black text-white shadow-lg flex flex-col justify-center transition-all duration-500">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4 transform hover:scale-105 transition-transform duration-300">
+      <div className="w-full md:w-1/3 p-4 md:p-6 bg-primary text-white shadow-lg flex flex-col justify-center">
+        <h2
+          style={{ fontFamily: "Courier New, monospace" }}
+          className="text-2xl md:text-3xl font-bold mb-4"
+        >
           Merge Audio Files
         </h2>
-        <p className="text-base md:text-lg leading-relaxed opacity-90 hover:opacity-100 transition-opacity duration-300">
+        <p
+          style={{ fontFamily: "Courier New, monospace" }}
+          className="text-base md:text-lg"
+        >
           This tool allows you to merge two audio files into one. Simply upload
           the files and merge them with one click.
         </p>
       </div>
 
       {/* Right Section */}
-      <div className="flex-1 flex justify-center items-center p-6">
-        <div className="bg-white p-6 md:p-8 rounded-lg shadow-2xl max-w-4xl w-full transition-shadow duration-300 hover:shadow-xl">
-          <div className="mb-6">
+      <div className="flex-1 flex justify-center items-center p-4 md:p-6">
+        <div className="bg-secondary p-4 md:p-6 rounded-lg shadow-lg w-full max-w-4xl">
+          <div className="mb-4">
             <label
-              className="block text-gray-700 text-sm md:text-base font-bold mb-3 transition-all duration-300 hover:text-gray-900"
+              style={{ fontFamily: "Courier New, monospace" }}
+              className="block text-accent text-sm font-bold mb-2"
               htmlFor="file1"
             >
               Upload First Audio File
@@ -51,18 +58,20 @@ export default function MergeAudioPage() {
               name="file1"
               accept="audio/*"
               onChange={handleFileChange}
-              className="block w-full text-sm text-gray-500
+              style={{ fontFamily: "Courier New, monospace" }}
+              className="block w-full text-sm text-accent
               file:mr-4 file:py-2 file:px-4
               file:rounded-full file:border-0
               file:text-sm file:font-semibold
-              file:bg-blue-50 file:text-blue-700
-              hover:file:bg-blue-100
+              file:bg-gray-800 file:text-accent
+              hover:file:bg-gray-600
             "
             />
           </div>
-          <div className="mb-6">
+          <div className="mb-4">
             <label
-              className="block text-gray-700 text-sm md:text-base font-bold mb-3 transition-all duration-300 hover:text-gray-900"
+              style={{ fontFamily: "Courier New, monospace" }}
+              className="block text-accent text-sm font-bold mb-2"
               htmlFor="file2"
             >
               Upload Second Audio File
@@ -72,25 +81,30 @@ export default function MergeAudioPage() {
               name="file2"
               accept="audio/*"
               onChange={handleFileChange}
-              className="block w-full text-sm text-gray-500
+              style={{ fontFamily: "Courier New, monospace" }}
+              className="block w-full text-sm text-accent
               file:mr-4 file:py-2 file:px-4
               file:rounded-full file:border-0
               file:text-sm file:font-semibold
-              file:bg-blue-50 file:text-blue-700
-              hover:file:bg-blue-100
+              file:bg-gray-800 file:text-accent
+              hover:file:bg-gray-600
             "
             />
           </div>
           <button
             onClick={handleMerge}
-            className="w-full py-3 bg-blue-500 text-white font-semibold rounded-lg transition-all duration-300 hover:bg-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-300"
+            style={{ fontFamily: "Courier New, monospace" }}
+            className="bg-primary hover:bg-green-900 text-white font-bold py-2 px-4 rounded-lg focus:outline-none transition-all duration-300 focus:shadow-outline"
           >
             Merge Audio
           </button>
 
           {mergedAudio && (
             <div className="mt-6">
-              <h3 className="text-lg md:text-xl font-semibold mb-4 text-gray-800 transition-colors duration-300 hover:text-gray-900">
+              <h3
+                style={{ fontFamily: "Courier New, monospace" }}
+                className="text-xl font-bold mb-2 text-accent"
+              >
                 Merged Audio
               </h3>
               <AudioPlayer
@@ -103,12 +117,16 @@ export default function MergeAudioPage() {
                   borderRadius: "8px",
                   boxShadow:
                     "0 8px 30px rgba(0, 0, 0, 0.15), 0 4px 15px rgba(0, 0, 0, 0.05)",
+                  fontFamily: "Courier New, monospace",
+                  fontWeight: "bold",
+                  backgroundColor: "#FFFFFF",
                 }}
               />
               <a
                 href={mergedAudio}
                 download="merged_audio.wav"
-                className="bg-purple-500 hover:bg-purple-700 text-white font-semibold py-3 px-6 rounded-lg focus:outline-none focus:ring-4 focus:ring-purple-300 transition-all duration-300 mt-4 inline-block"
+                style={{ fontFamily: "Courier New, monospace" }}
+                className="bg-primary hover:bg-purple-900 text-white font-semibold py-3 px-6 rounded-lg focus:outline-none focus:ring-4 focus:ring-purple-300 transition-all duration-300 mt-4 inline-block"
               >
                 Download Merged Audio
               </a>

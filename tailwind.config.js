@@ -8,9 +8,9 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: "#030712",
-        secondary: "#6A5ACD",
-        accent: "", // Replace with your hex code
+        primary: "#000000",
+        secondary: "#212121",
+        accent: "#FFFFFF", // Replace with your hex code
       },
     },
   },

@@ -132,19 +132,28 @@ function AudioEditor() {
 
   return (
     <div className="flex flex-col min-h-screen bg-primary md:flex-row">
-      <div className="w-full md:w-1/3 p-4 md:p-6 bg-black text-white shadow-lg flex flex-col justify-center">
-        <h2 className="text-2xl md:text-3xl font-bold mb-4">Audio Trimmer</h2>
-        <p className="text-base md:text-lg">
+      <div className="w-full md:w-1/3 p-4 md:p-6 bg-primary text-white shadow-lg flex flex-col justify-center">
+        <h2
+          style={{ fontFamily: "Courier New, monospace" }}
+          className="text-2xl md:text-3xl font-bold mb-4"
+        >
+          Audio Trimmer
+        </h2>
+        <p
+          style={{ fontFamily: "Courier New, monospace" }}
+          className="text-base md:text-lg"
+        >
           This tool allows you to upload an audio file, play/pause it, seek
           within it, and trim it to a specified range. You can then download the
           trimmed audio.
         </p>
       </div>
       <div className="flex-1 flex justify-center items-center p-4 md:p-6">
-        <div className="bg-white p-4 md:p-6 rounded-lg shadow-lg w-full max-w-4xl">
+        <div className="bg-secondary p-4 md:p-6 rounded-lg shadow-lg w-full max-w-4xl">
           <div className="mb-4">
             <label
-              className="block text-gray-700 text-sm font-bold mb-2"
+              style={{ fontFamily: "Courier New, monospace" }}
+              className="block text-accent text-sm font-bold mb-2"
               htmlFor="audio-upload"
             >
               Upload Audio File
@@ -154,22 +163,26 @@ function AudioEditor() {
               id="audio-upload"
               accept="audio/mp3"
               onChange={handleFileUpload}
-              className="block w-full text-sm text-gray-500
+              style={{ fontFamily: "Courier New, monospace" }}
+              className="block w-full text-sm text-accent
               file:mr-4 file:py-2 file:px-4
               file:rounded-full file:border-0
               file:text-sm file:font-semibold
-              file:bg-blue-50 file:text-blue-700
-              hover:file:bg-blue-100
+              file:bg-gray-800 file:text-accent
+              hover:file:bg-gray-600
             "
             />
           </div>
           {audioSrc && (
             <div>
               <audio ref={audioRef} src={audioSrc} className="hidden" />
-              <div className="mb-4">
+              <div
+                style={{ fontFamily: "Courier New, monospace" }}
+                className="mb-4"
+              >
                 <button
                   onClick={handlePlayPause}
-                  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                  className="bg-slate-400 hover:bg-slate-200 text-primary font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline"
                 >
                   {isPlaying ? "Pause" : "Play"}
                 </button>
@@ -183,16 +196,25 @@ function AudioEditor() {
                   onChange={handleSeek}
                   className="w-full"
                 />
-                <div className="flex justify-between text-sm text-gray-600">
+                <div
+                  style={{ fontFamily: "Courier New, monospace" }}
+                  className="flex justify-between text-sm text-accent"
+                >
                   <span>{formatTime(currentTime)}</span>
                   <span>{formatTime(duration)}</span>
                 </div>
               </div>
               <div className="mb-4">
-                <label className="block text-gray-700 text-sm font-bold mb-2">
+                <label
+                  style={{ fontFamily: "Courier New, monospace" }}
+                  className="block text-accent text-sm font-bold mb-2"
+                >
                   Trim Range
                 </label>
-                <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-2">
+                <div
+                  style={{ fontFamily: "Courier New, monospace" }}
+                  className="flex flex-col md:flex-row items-center font-bold space-y-2 md:space-y-0 md:space-x-2"
+                >
                   <input
                     type="number"
                     value={startTime}
@@ -224,7 +246,8 @@ function AudioEditor() {
               </div>
               <button
                 onClick={handleTrim}
-                className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                style={{ fontFamily: "Courier New, monospace" }}
+                className="bg-primary hover:bg-green-900 text-white font-bold py-2 px-4 rounded focus:outline-none ransition-all duration-300 focus:shadow-outline"
               >
                 Trim Audio
               </button>
@@ -232,7 +255,10 @@ function AudioEditor() {
           )}
           {trimmedAudioSrc && (
             <div className="mt-6">
-              <h3 className="text-xl font-bold mb-2 text-gray-800">
+              <h3
+                style={{ fontFamily: "Courier New, monospace" }}
+                className="text-xl font-bold mb-2 text-accent"
+              >
                 Trimmed Audio
               </h3>
               <AudioPlayer
@@ -245,12 +271,16 @@ function AudioEditor() {
                   borderRadius: "8px",
                   boxShadow:
                     "0 8px 30px rgba(0, 0, 0, 0.15), 0 4px 15px rgba(0, 0, 0, 0.05)",
+                  fontFamily: "Courier New, monospace",
+                  fontWeight: "bold",
+                  backgroundColor: "#FFFFFF",
                 }}
               />
               <a
                 href={trimmedAudioSrc}
                 download="trimmed_audio.wav"
-                className="bg-purple-500 hover:bg-purple-700 text-white font-semibold py-3 px-6 rounded-lg focus:outline-none focus:ring-4 focus:ring-purple-300 transition-all duration-300 mt-4 inline-block"
+                style={{ fontFamily: "Courier New, monospace" }}
+                className="bg-primary hover:bg-purple-900 text-white font-semibold py-3 px-6 rounded-lg focus:outline-none focus:ring-4 focus:ring-purple-300 transition-all duration-300 mt-4 inline-block"
               >
                 Download Trimmed Audio
               </a>

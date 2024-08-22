@@ -74,11 +74,11 @@ export default function Header() {
   };
 
   return (
-    <header className="bg-gradient-to-r from-indigo-900 to-slate-950 text-white shadow-lg backdrop-blur-md">
+    <header className="bg-gradient-to-r from-black to-black text-white shadow-lg backdrop-blur-md shadow-inner">
       <div className="container mx-auto flex flex-wrap items-center justify-between p-4">
         <Link
           href="/"
-          className="text-3xl font-extrabold tracking-wider flex-shrink-0"
+          className="text-3xl font-extrabold tracking-wider flex-shrink-0 drop-shadow-lg"
           onClick={handleHomeClick}
         >
           <img
@@ -90,7 +90,8 @@ export default function Header() {
         <nav className="flex flex-wrap items-center gap-4 mt-4 md:mt-0">
           <Link
             href="/digitalSignature"
-            className="block px-4 py-2 bg-white bg-opacity-10 rounded-lg hover:bg-opacity-20 transition-all duration-300 ease-in-out transform hover:scale-105 text-center"
+            style={{ fontFamily: "Courier New, monospace" }}
+            className="block px-4 py-2 bg-white bg-opacity-10 rounded-lg hover:bg-opacity-20 transition-all duration-300 ease-in-out transform hover:scale-105 text-center shadow-md"
           >
             Digital Signature
           </Link>
@@ -98,7 +99,7 @@ export default function Header() {
           {/* Audio Tools Dropdown */}
           <Select
             options={optionsAudio}
-            className="w-full md:w-44"
+            className="w-full md:w-44 shadow-md"
             classNamePrefix="select"
             placeholder="Audio Tools"
             menuPlacement="bottom"
@@ -110,10 +111,12 @@ export default function Header() {
                 backgroundColor: "#1f1f1f",
                 borderRadius: "0.375rem",
                 boxShadow: "0 2px 10px rgba(0, 0, 0, 0.2)",
+                fontFamily: "Courier New, monospace",
               }),
               option: (provided, state) => ({
                 ...provided,
                 backgroundColor: state.isSelected ? "#4a4a4a" : "#1f1f1f",
+                fontFamily: "Courier New, monospace",
                 color: "#fff",
                 "&:hover": {
                   backgroundColor: "#333",
@@ -122,8 +125,10 @@ export default function Header() {
               control: (provided) => ({
                 ...provided,
                 backgroundColor: "#1f1f1f",
+                fontFamily: "Courier New, monospace",
                 border: "1px solid #333",
                 color: "#fff",
+                boxShadow: "inset 0 1px 3px rgba(0, 0, 0, 0.6)", // Inner shadow
                 "&:hover": {
                   borderColor: "#555",
                 },
@@ -131,10 +136,12 @@ export default function Header() {
               placeholder: (provided) => ({
                 ...provided,
                 color: "#888",
+                fontFamily: "Courier New, monospace",
               }),
               singleValue: (provided) => ({
                 ...provided,
                 color: "#fff",
+                fontFamily: "Courier New, monospace",
               }),
             }}
           />
@@ -142,7 +149,7 @@ export default function Header() {
           {/* PDF Tools Dropdown */}
           <Select
             options={optionsPDF}
-            className="w-full md:w-44"
+            className="w-full md:w-44 shadow-md"
             classNamePrefix="select"
             placeholder="PDF Tools"
             menuPlacement="bottom"
@@ -152,12 +159,14 @@ export default function Header() {
               menu: (provided) => ({
                 ...provided,
                 backgroundColor: "#1f1f1f",
+                fontFamily: "Courier New, monospace",
                 borderRadius: "0.375rem",
                 boxShadow: "0 2px 10px rgba(0, 0, 0, 0.2)",
               }),
               option: (provided, state) => ({
                 ...provided,
                 backgroundColor: state.isSelected ? "#4a4a4a" : "#1f1f1f",
+                fontFamily: "Courier New, monospace",
                 color: "#fff",
                 "&:hover": {
                   backgroundColor: "#333",
@@ -167,7 +176,9 @@ export default function Header() {
                 ...provided,
                 backgroundColor: "#1f1f1f",
                 border: "1px solid #333",
+                fontFamily: "Courier New, monospace",
                 color: "#fff",
+                boxShadow: "inset 0 1px 3px rgba(0, 0, 0, 0.6)", // Inner shadow
                 "&:hover": {
                   borderColor: "#555",
                 },
@@ -175,10 +186,12 @@ export default function Header() {
               placeholder: (provided) => ({
                 ...provided,
                 color: "#888",
+                fontFamily: "Courier New, monospace",
               }),
               singleValue: (provided) => ({
                 ...provided,
                 color: "#fff",
+                fontFamily: "Courier New, monospace",
               }),
             }}
           />
