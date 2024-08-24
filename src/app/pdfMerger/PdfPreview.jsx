@@ -2,7 +2,7 @@ export default function PdfPreview({ pdfUrl }) {
   return (
     <div className="bg-gray-100 rounded-lg p-4 mt-6">
       <h2
-        style={{ fontFamily: "Courier New, monospace" }}
+        style={{ fontFamily: "Poppins, sans-serif" }}
         className="text-xl font-semibold text-gray-900 mb-4"
       >
         PDF Preview

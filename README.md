@@ -18,4 +18,4 @@ npm install
 
 Contributions are always welcome!
 
-![LOGO](/public/mainlogo.png)
+![LOGO](/public/mainlogo-color.png)
