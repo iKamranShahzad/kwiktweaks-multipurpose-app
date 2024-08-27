@@ -21,7 +21,7 @@ export default function Home() {
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
-          <div className="p-8 rounded-xl bg-gray-800 shadow-lg hover:bg-gray-700 transition-all flex flex-col items-center">
+          <div className="p-8 rounded-xl bg-gray-800 shadow-lg bg-opacity-75 hover:bg-gray-950 hover:bg-opacity-30 transition-all flex flex-col items-center">
             <svg
               className="w-16 h-16 text-blue-400 mb-4"
               fill="none"
@@ -43,13 +43,20 @@ export default function Home() {
               Audio Editing
             </h2>
             <p
-              className="text-gray-400 text-center"
+              className="text-gray-400 text-center mb-4"
               style={{ fontFamily: "Poppins, sans-serif" }}
             >
               Refine and optimize your audio files with ease.
             </p>
+            <a
+              href="./audiotrim" // Adjust this path to the actual route for trimming audio files
+              className="mt-auto bg-gray-700 text-white py-2 px-4 rounded-full hover:bg-gray-600 transition-all"
+              style={{ fontFamily: "Poppins, sans-serif" }}
+            >
+              Try Trimming Audio Files
+            </a>
           </div>
-          <div className="p-8 rounded-xl bg-gray-800 shadow-lg hover:bg-gray-700 transition-all flex flex-col items-center">
+          <div className="p-8 rounded-xl bg-gray-800 shadow-lg bg-opacity-75 hover:bg-gray-950 hover:bg-opacity-30 transition-all flex flex-col items-center">
             <svg
               className="w-16 h-16 text-green-400 mb-4"
               fill="none"
@@ -71,13 +78,20 @@ export default function Home() {
               PDF Tools
             </h2>
             <p
-              className="text-gray-400 text-center"
+              className="text-gray-400 text-center mb-4"
               style={{ fontFamily: "Poppins, sans-serif" }}
             >
               Manage your PDF documents efficiently.
             </p>
+            <a
+              href="./pdfMerger"
+              className="mt-auto bg-gray-700 text-white py-2 px-4 rounded-full hover:bg-gray-600 transition-all"
+              style={{ fontFamily: "Poppins, sans-serif" }}
+            >
+              Try Merging PDFs
+            </a>
           </div>
-          <div className="p-8 rounded-xl bg-gray-800 shadow-lg hover:bg-gray-700 transition-all flex flex-col items-center">
+          <div className="p-8 rounded-xl bg-gray-800 shadow-lg bg-opacity-75 hover:bg-gray-950 hover:bg-opacity-30 transition-all flex flex-col items-center">
             <svg
               className="w-16 h-16 text-yellow-400 mb-4"
               fill="none"
@@ -99,11 +113,18 @@ export default function Home() {
               Digital Signatures
             </h2>
             <p
-              className="text-gray-400 text-center"
+              className="text-gray-400 text-center mb-4"
               style={{ fontFamily: "Poppins, sans-serif" }}
             >
-              Securely sign your documents online.
+              Securely export your signatures.
             </p>
+            <a
+              href="./digitalSignature"
+              className="mt-auto bg-gray-700 text-white py-2 px-4 rounded-full hover:bg-gray-600 transition-all"
+              style={{ fontFamily: "Poppins, sans-serif" }}
+            >
+              Export Your Signature
+            </a>
           </div>
         </div>
       </main>

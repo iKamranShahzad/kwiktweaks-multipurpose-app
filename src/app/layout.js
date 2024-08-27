@@ -2,7 +2,7 @@ import Header from "@/components/header";
 import "./globals.css";
 
 export const metadata = {
-  title: "KwikTweaks - WebApp",
+  title: "KwikTweaks",
   description: "A Multipurpose WebApp",
 };
 

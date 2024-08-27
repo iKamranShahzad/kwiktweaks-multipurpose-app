@@ -5,6 +5,12 @@ import Select from "react-select";
 import { useRouter, usePathname } from "next/navigation";
 import "@fontsource/poppins";
 
+const optionsTools = [
+  { value: "/digitalSignature", label: "Digital Signature" },
+  { value: "/adjustspeed", label: "XX" },
+  { value: "/mergeaudio", label: "XXX" },
+];
+
 const optionsAudio = [
   { value: "/audiotrim", label: "Trim MP3" },
   { value: "/adjustspeed", label: "Adjust Speed" },
