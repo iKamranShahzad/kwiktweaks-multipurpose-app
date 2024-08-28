@@ -7,8 +7,8 @@ import "@fontsource/poppins";
 
 const optionsTools = [
   { value: "/digitalSignature", label: "Digital Signature" },
-  { value: "#", label: "Adjust Speed" },
-  { value: "#", label: "Merge Audio" },
+  { value: "/qrcode", label: "QR Generator" },
+  { value: "#", label: "XX" },
 ];
 
 const optionsAudio = [
@@ -127,7 +127,7 @@ export default function Header() {
               options={optionsTools}
               className="w-full sm:w-40 md:w-44 shadow-md z-50"
               classNamePrefix="select"
-              placeholder="Tools"
+              placeholder="Utilities"
               value={selectedTool}
               onChange={(option) =>
                 handleChange(option, setSelectedTool, [
@@ -171,7 +171,7 @@ export default function Header() {
       </header>
 
       {loading && (
-        <div className="fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-50">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
           <img
             src="./logo.png"
             alt="loading"
