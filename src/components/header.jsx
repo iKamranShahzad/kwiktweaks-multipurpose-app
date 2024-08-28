@@ -7,8 +7,8 @@ import "@fontsource/poppins";
 
 const optionsTools = [
   { value: "/digitalSignature", label: "Digital Signature" },
-  { value: "/adjustspeed", label: "XX" },
-  { value: "/mergeaudio", label: "XXX" },
+  { value: "#", label: "Adjust Speed" },
+  { value: "#", label: "Merge Audio" },
 ];
 
 const optionsAudio = [
@@ -26,43 +26,29 @@ const optionsPDF = [
 export default function Header() {
   const router = useRouter();
   const pathname = usePathname();
+  const [selectedTool, setSelectedTool] = useState(null);
   const [selectedAudio, setSelectedAudio] = useState(null);
   const [selectedPDF, setSelectedPDF] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (pathname.startsWith("/digitalSignature")) {
-      setSelectedAudio(null);
-      setSelectedPDF(null);
-    } else if (
-      pathname.startsWith("/audiotrim") ||
-      pathname.startsWith("/adjustspeed") ||
-      pathname.startsWith("/mergeaudio")
-    ) {
-      setSelectedPDF(null);
-    } else if (
-      pathname.startsWith("/pdfMerger") ||
-      pathname.startsWith("/pdfSuboption2") ||
-      pathname.startsWith("/pdfSuboption3")
-    ) {
-      setSelectedAudio(null);
-    }
+    const currentPath = pathname;
+    setSelectedTool(
+      optionsTools.find((option) => option.value === currentPath) || null
+    );
+    setSelectedAudio(
+      optionsAudio.find((option) => option.value === currentPath) || null
+    );
+    setSelectedPDF(
+      optionsPDF.find((option) => option.value === currentPath) || null
+    );
     setLoading(false);
   }, [pathname]);
 
-  const handleAudioChange = (selectedOption) => {
+  const handleChange = (selectedOption, setFunction, resetFunctions) => {
     if (selectedOption && selectedOption.value !== pathname) {
-      setSelectedAudio(selectedOption);
-      if (selectedOption.value !== "#") {
-        setLoading(true);
-        router.push(selectedOption.value);
-      }
-    }
-  };
-
-  const handlePDFChange = (selectedOption) => {
-    if (selectedOption && selectedOption.value !== pathname) {
-      setSelectedPDF(selectedOption);
+      setFunction(selectedOption);
+      resetFunctions.forEach((reset) => reset(null));
       if (selectedOption.value !== "#") {
         setLoading(true);
         router.push(selectedOption.value);
@@ -72,11 +58,53 @@ export default function Header() {
 
   const handleHomeClick = () => {
     if (pathname !== "/") {
+      setSelectedTool(null);
       setSelectedAudio(null);
       setSelectedPDF(null);
       setLoading(true);
       router.push("/");
     }
+  };
+
+  const selectStyles = {
+    menu: (provided) => ({
+      ...provided,
+      backgroundColor: "#1f1f1f",
+      borderRadius: "0.375rem",
+      boxShadow: "0 2px 10px rgba(0, 0, 0, 0.2)",
+      fontFamily: "Poppins, sans-serif",
+      zIndex: 1000,
+    }),
+    option: (provided, state) => ({
+      ...provided,
+      backgroundColor: state.isSelected ? "#4a4a4a" : "#1f1f1f",
+      fontFamily: "Poppins, sans-serif",
+      color: "#fff",
+      "&:hover": {
+        backgroundColor: "#333",
+      },
+    }),
+    control: (provided) => ({
+      ...provided,
+      backgroundColor: "#1f1f1f",
+      fontFamily: "Poppins, sans-serif",
+      border: "1px solid #333",
+      color: "#fff",
+      boxShadow: "inset 0 1px 3px rgba(0, 0, 0, 0.6)",
+      "&:hover": {
+        borderColor: "#555",
+      },
+    }),
+    placeholder: (provided) => ({
+      ...provided,
+      color: "#888",
+      fontFamily: "Poppins, sans-serif",
+    }),
+    singleValue: (provided) => ({
+      ...provided,
+      color: "#fff",
+      fontFamily: "Poppins, sans-serif",
+    }),
   };
 
   return (
@@ -95,120 +123,47 @@ export default function Header() {
             />
           </Link>
           <nav className="flex flex-wrap items-center gap-4 sm:gap-6 md:gap-8 px-2 sm:px-4 mt-4 md:mt-0 relative z-10">
-            <Link
-              href="/digitalSignature"
-              className="block px-3 py-2 sm:px-4 sm:py-3 bg-white bg-opacity-10 rounded-lg hover:bg-opacity-20 transition-all duration-300 ease-in-out transform hover:scale-105 text-center shadow-md text-sm sm:text-base"
-              style={{ fontFamily: "Poppins, sans-serif" }}
-            >
-              Digital Signature
-            </Link>
-
-            {/* Audio Tools Dropdown */}
+            <Select
+              options={optionsTools}
+              className="w-full sm:w-40 md:w-44 shadow-md z-50"
+              classNamePrefix="select"
+              placeholder="Tools"
+              value={selectedTool}
+              onChange={(option) =>
+                handleChange(option, setSelectedTool, [
+                  setSelectedAudio,
+                  setSelectedPDF,
+                ])
+              }
+              styles={selectStyles}
+            />
             <Select
               options={optionsAudio}
               className="w-full sm:w-40 md:w-44 shadow-md z-40"
               classNamePrefix="select"
               placeholder="Audio Tools"
-              menuPlacement="bottom"
               value={selectedAudio}
-              onChange={handleAudioChange}
-              styles={{
-                menu: (provided) => ({
-                  ...provided,
-                  backgroundColor: "#1f1f1f",
-                  borderRadius: "0.375rem",
-                  boxShadow: "0 2px 10px rgba(0, 0, 0, 0.2)",
-                  fontFamily: "Poppins, sans-serif",
-                  zIndex: 1000, // Ensures dropdown is on top
-                  position: "absolute", // Make sure dropdown is positioned correctly
-                  top: "100%", // Position dropdown directly below the control
-                  left: 0,
-                }),
-                option: (provided, state) => ({
-                  ...provided,
-                  backgroundColor: state.isSelected ? "#4a4a4a" : "#1f1f1f",
-                  fontFamily: "Poppins, sans-serif",
-                  color: "#fff",
-                  "&:hover": {
-                    backgroundColor: "#333",
-                  },
-                }),
-                control: (provided) => ({
-                  ...provided,
-                  backgroundColor: "#1f1f1f",
-                  fontFamily: "Poppins, sans-serif",
-                  border: "1px solid #333",
-                  color: "#fff",
-                  boxShadow: "inset 0 1px 3px rgba(0, 0, 0, 0.6)",
-                  "&:hover": {
-                    borderColor: "#555",
-                  },
-                }),
-                placeholder: (provided) => ({
-                  ...provided,
-                  color: "#888",
-                  fontFamily: "Poppins, sans-serif",
-                }),
-                singleValue: (provided) => ({
-                  ...provided,
-                  color: "#fff",
-                  fontFamily: "Poppins, sans-serif",
-                }),
-              }}
+              onChange={(option) =>
+                handleChange(option, setSelectedAudio, [
+                  setSelectedTool,
+                  setSelectedPDF,
+                ])
+              }
+              styles={selectStyles}
             />
-
-            {/* PDF Tools Dropdown */}
             <Select
               options={optionsPDF}
               className="w-full sm:w-40 md:w-44 shadow-md z-30"
               classNamePrefix="select"
               placeholder="PDF Tools"
-              menuPlacement="bottom"
               value={selectedPDF}
-              onChange={handlePDFChange}
-              styles={{
-                menu: (provided) => ({
-                  ...provided,
-                  backgroundColor: "#1f1f1f",
-                  fontFamily: "Poppins, sans-serif",
-                  borderRadius: "0.375rem",
-                  boxShadow: "0 2px 10px rgba(0, 0, 0, 0.2)",
-                  zIndex: 1000, // Ensures dropdown is on top
-                  position: "absolute", // Make sure dropdown is positioned correctly
-                  top: "100%", // Position dropdown directly below the control
-                  left: 0,
-                }),
-                option: (provided, state) => ({
-                  ...provided,
-                  backgroundColor: state.isSelected ? "#4a4a4a" : "#1f1f1f",
-                  fontFamily: "Poppins, sans-serif",
-                  color: "#fff",
-                  "&:hover": {
-                    backgroundColor: "#333",
-                  },
-                }),
-                control: (provided) => ({
-                  ...provided,
-                  backgroundColor: "#1f1f1f",
-                  border: "1px solid #333",
-                  fontFamily: "Poppins, sans-serif",
-                  color: "#fff",
-                  boxShadow: "inset 0 1px 3px rgba(0, 0, 0, 0.6)",
-                  "&:hover": {
-                    borderColor: "#555",
-                  },
-                }),
-                placeholder: (provided) => ({
-                  ...provided,
-                  color: "#888",
-                  fontFamily: "Poppins, sans-serif",
-                }),
-                singleValue: (provided) => ({
-                  ...provided,
-                  color: "#fff",
-                  fontFamily: "Poppins, sans-serif",
-                }),
-              }}
+              onChange={(option) =>
+                handleChange(option, setSelectedPDF, [
+                  setSelectedTool,
+                  setSelectedAudio,
+                ])
+              }
+              styles={selectStyles}
             />
           </nav>
         </div>

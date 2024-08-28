@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -48,13 +49,13 @@ export default function Home() {
             >
               Refine and optimize your audio files with ease.
             </p>
-            <a
+            <Link
               href="./audiotrim" // Adjust this path to the actual route for trimming audio files
               className="mt-auto bg-gray-700 text-white py-2 px-4 rounded-full hover:bg-gray-600 transition-all"
               style={{ fontFamily: "Poppins, sans-serif" }}
             >
               Try Trimming Audio Files
-            </a>
+            </Link>
           </div>
           <div className="p-8 rounded-xl bg-gray-800 shadow-lg bg-opacity-75 hover:bg-gray-950 hover:bg-opacity-30 transition-all flex flex-col items-center">
             <svg
@@ -83,13 +84,13 @@ export default function Home() {
             >
               Manage your PDF documents efficiently.
             </p>
-            <a
+            <Link
               href="./pdfMerger"
               className="mt-auto bg-gray-700 text-white py-2 px-4 rounded-full hover:bg-gray-600 transition-all"
               style={{ fontFamily: "Poppins, sans-serif" }}
             >
               Try Merging PDFs
-            </a>
+            </Link>
           </div>
           <div className="p-8 rounded-xl bg-gray-800 shadow-lg bg-opacity-75 hover:bg-gray-950 hover:bg-opacity-30 transition-all flex flex-col items-center">
             <svg
@@ -118,13 +119,13 @@ export default function Home() {
             >
               Securely export your signatures.
             </p>
-            <a
+            <Link
               href="./digitalSignature"
               className="mt-auto bg-gray-700 text-white py-2 px-4 rounded-full hover:bg-gray-600 transition-all"
               style={{ fontFamily: "Poppins, sans-serif" }}
             >
               Export Your Signature
-            </a>
+            </Link>
           </div>
         </div>
       </main>
