@@ -1,4 +1,3 @@
-// src/components/QRCodeGenerator.js
 "use client";
 import React, { useState, useRef, useEffect } from "react";
 import LeftSection from "@/components/LeftSection";

@@ -31,7 +31,6 @@ export default function MergeAudioPage() {
         description="This tool allows you to merge two audio files into one. Simply upload
           the files and merge them with one click."
       />
-      {/* Right Section */}
       <div className="flex-1 flex justify-center items-center p-4 md:p-6">
         <div className="bg-gray-700 bg-opacity-25 p-4 md:p-6 rounded-lg shadow-lg w-full max-w-4xl">
           <div className="mb-4">
