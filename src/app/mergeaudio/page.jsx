@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { mergeAudioFiles } from "../../utils/mergeAudio";
 import AudioPlayer from "react-h5-audio-player";
+import LeftSection from "@/components/LeftSection";
 import "react-h5-audio-player/lib/styles.css";
 
 export default function MergeAudioPage() {
@@ -25,23 +26,11 @@ export default function MergeAudioPage() {
 
   return (
     <div className="flex flex-col min-h-screen bg-transparent md:flex-row">
-      {/* Left Section */}
-      <div className="w-full md:w-1/3 p-4 md:p-6 bg-transparent text-white shadow-lg flex flex-col justify-center">
-        <h2
-          style={{ fontFamily: "Poppins, sans-serif" }}
-          className="text-2xl md:text-3xl font-bold mb-4"
-        >
-          Merge Audio Files
-        </h2>
-        <p
-          style={{ fontFamily: "Poppins, sans-serif" }}
-          className="text-base md:text-lg"
-        >
-          This tool allows you to merge two audio files into one. Simply upload
-          the files and merge them with one click.
-        </p>
-      </div>
-
+      <LeftSection
+        title="Merge Audio Files"
+        description="This tool allows you to merge two audio files into one. Simply upload
+          the files and merge them with one click."
+      />
       {/* Right Section */}
       <div className="flex-1 flex justify-center items-center p-4 md:p-6">
         <div className="bg-gray-700 bg-opacity-25 p-4 md:p-6 rounded-lg shadow-lg w-full max-w-4xl">

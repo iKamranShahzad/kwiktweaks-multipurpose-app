@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useRef } from "react";
+import LeftSection from "@/components/LeftSection";
 import AudioPlayer from "react-h5-audio-player";
 import "react-h5-audio-player/lib/styles.css";
 
@@ -100,22 +101,11 @@ export default function AudioSpeedAdjuster() {
 
   return (
     <div className="flex flex-col min-h-screen bg-transparent md:flex-row">
-      <div className="w-full md:w-1/3 p-4 md:p-6 bg-transparent text-white shadow-lg flex flex-col justify-center">
-        <h2
-          style={{ fontFamily: "Poppins, sans-serif" }}
-          className="text-2xl md:text-3xl font-bold mb-4"
-        >
-          Audio Speed Adjuster
-        </h2>
-        <p
-          style={{ fontFamily: "Poppins, sans-serif" }}
-          className="text-base md:text-lg"
-        >
-          Upload your audio file and adjust its speed to your preference. You
-          can then preview and download the modified audio.
-        </p>
-      </div>
-
+      <LeftSection
+        title="Audio Speed Adjuster"
+        description="Upload your audio file and adjust its speed to your preference. You
+          can then preview and download the modified audio."
+      />
       <div className="flex-1 flex justify-center items-center p-4 md:p-6">
         <div className="bg-gray-700 bg-opacity-25 p-4 md:p-6 rounded-lg shadow-lg w-full max-w-4xl">
           <div className="mb-4">

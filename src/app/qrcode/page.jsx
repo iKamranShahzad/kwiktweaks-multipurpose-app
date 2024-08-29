@@ -1,6 +1,7 @@
 // src/components/QRCodeGenerator.js
 "use client";
 import React, { useState, useRef, useEffect } from "react";
+import LeftSection from "@/components/LeftSection";
 import QRCode from "qrcode";
 import JsBarcode from "jsbarcode";
 
@@ -55,21 +56,11 @@ const BarcodeGenerator = () => {
 
   return (
     <div className="flex flex-col min-h-screen bg-transparent md:flex-row">
-      <div className="w-full md:w-1/3 p-4 md:p-6 bg-transparent text-white shadow-lg flex flex-col justify-center">
-        <h2
-          style={{ fontFamily: "Poppins, sans-serif" }}
-          className="text-2xl md:text-3xl font-bold mb-4"
-        >
-          Barcode Generator
-        </h2>
-        <p
-          style={{ fontFamily: "Poppins, sans-serif" }}
-          className="text-base md:text-lg"
-        >
-          Enter any text or URL to generate a barcode. You can select between
-          generating a 1D barcode (like Code 128) or a 2D barcode (QR Code).
-        </p>
-      </div>
+      <LeftSection
+        title="Barcode Generator"
+        description="Enter any text or URL to generate a barcode. You can select between
+          generating a 1D barcode (like Code 128) or a 2D barcode (QR Code)."
+      />
       <div className="flex-1 flex justify-center items-center p-4 md:p-6">
         <div className="bg-gray-700 bg-opacity-25 p-4 md:p-6 rounded-lg shadow-lg w-full max-w-4xl">
           <div className="mb-4">

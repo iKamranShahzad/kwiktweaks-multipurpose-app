@@ -31,3 +31,10 @@ body {
     text-wrap: balance;
   }
 }
+
+.loading-background {
+  background-image: url("../../public/trianglesg.svg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}

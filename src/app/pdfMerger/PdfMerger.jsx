@@ -1,4 +1,6 @@
+"use client";
 import { useState, lazy, Suspense } from "react";
+import LeftSection from "@/components/LeftSection";
 import { PDFDocument } from "pdf-lib";
 
 const PdfPreview = lazy(() => import("./PdfPreview"));
@@ -61,23 +63,11 @@ export default function PdfMerger() {
 
   return (
     <div className="flex flex-col min-h-screen bg-transparent md:flex-row">
-      {/* Left Section */}
-      <div className="w-full md:w-1/3 p-4 md:p-6 bg-transparent text-white shadow-lg flex flex-col justify-center">
-        <h2
-          style={{ fontFamily: "Poppins, sans-serif" }}
-          className="text-2xl md:text-3xl font-bold mb-4"
-        >
-          PDF Merger
-        </h2>
-        <p
-          style={{ fontFamily: "Poppins, sans-serif" }}
-          className="text-base md:text-lg"
-        >
-          Merge multiple PDF files into one. Upload your PDFs, reorder them as
-          needed, and merge them with a click.
-        </p>
-      </div>
-
+      <LeftSection
+        title="PDF Merger"
+        description="Merge multiple PDF files into one. Upload your PDFs, reorder them as
+          needed, and merge them with a click."
+      />
       {/* Right Section */}
       <div className="flex-1 flex justify-center items-center p-4 md:p-6">
         <div className="bg-gray-700 bg-opacity-25 p-4 md:p-6 rounded-lg shadow-lg w-full max-w-4xl">

@@ -1,4 +1,5 @@
 "use client";
+import LeftSection from "@/components/LeftSection";
 import React, { useRef, useState, useEffect } from "react";
 
 const SignatureCanvas = () => {
@@ -117,21 +118,11 @@ const SignatureCanvas = () => {
 
   return (
     <div className="flex flex-col min-h-screen bg-transparent md:flex-row">
-      <div className="w-full md:w-1/3 p-4 md:p-6 bg-transparent text-white shadow-lg flex flex-col justify-center">
-        <h2
-          className="text-2xl md:text-3xl font-bold mb-4"
-          style={{ fontFamily: "Poppins, sans-serif" }}
-        >
-          Welcome to the Digital Signature Tool!
-        </h2>
-        <p
-          className="text-base md:text-lg"
-          style={{ fontFamily: "Poppins, sans-serif" }}
-        >
-          This Tool allows you to create your digital signature and export it as
-          a PNG file.
-        </p>
-      </div>
+      <LeftSection
+        title="Welcome to the Digital Signature Tool!"
+        description="This Tool allows you to create your digital signature and export it as
+          a PNG file."
+      />
       <div className="flex-1 flex justify-center items-center p-4 md:p-6">
         <div className="bg-white p-4 md:p-6 rounded-lg shadow-lg max-w-full w-full">
           <canvas
