@@ -3,7 +3,7 @@ export const metadata = {
   description:
     "Easily generate QR codes for any text or URL. Customize the design, download the QR code, and use it for your needs.",
   keywords:
-    "QR code, generate QR code, create QR code, QR code generator, customize QR code, download QR code, text to QR code, URL to QR code",
+    "QR code, generate QR code, create QR code, QR code generator, customize QR code, download QR code, text to QR code, URL to QR code, Bar Code",
   author: "KwikTweaks",
   robots: "index, follow",
   metadataBase: new URL("https://ikamranshahzad.github.io"),
