@@ -6,7 +6,7 @@ import Loading from "../app/loading";
 const optionsTools = [
   { value: "/digitalSignature", label: "Digital Signature" },
   { value: "/qrcode", label: "QR Generator" },
-  { value: "#", label: "XX" },
+  { value: "/snippetgen", label: "Snippet Screens" },
 ];
 
 const optionsAudio = [
