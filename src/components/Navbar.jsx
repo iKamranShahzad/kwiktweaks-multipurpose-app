@@ -96,7 +96,7 @@ export default function Navbar({ optionsTools, optionsAudio, optionsPDF }) {
           <img
             src="./mainlogo-color.png"
             alt="KwikTweaks"
-            className="w-24 sm:w-32 md:w-36 lg:w-40 h-auto transform hover:scale-110 transition-transform duration-300"
+            className="w-52 h-auto sm:w-52 md:w-52 lg:w-64 transform hover:scale-110 transition-transform duration-300"
           />
         </Link>
         <nav className="flex flex-wrap items-center gap-4 sm:gap-6 md:gap-8 px-2 sm:px-4 mt-4 md:mt-0 relative z-10">
