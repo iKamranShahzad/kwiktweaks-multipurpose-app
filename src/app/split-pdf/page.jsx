@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import LeftSection from "../../components/LeftSection"; // Adjust the import path as needed
+import { PDFDocument } from "pdf-lib"; // Import pdf-lib for client-side PDF operations
+import LeftSection from "../../components/LeftSection";
 
 export default function PdfSplitterPage() {
   const [splitFiles, setSplitFiles] = useState([]);
@@ -16,40 +17,50 @@ export default function PdfSplitterPage() {
 
     if (!fileInput) return;
 
-    const formData = new FormData();
-    formData.append("file", fileInput);
-    formData.append("startPage", startPage);
-    formData.append("endPage", endPage);
-
     setLoading(true);
 
     try {
-      const response = await fetch("/api/pdf-splitter", {
-        method: "POST",
-        body: formData,
+      const pdfDoc = await PDFDocument.load(await fileInput.arrayBuffer());
+      const numberOfPages = pdfDoc.getPageCount();
+      const pdfFiles = [];
+
+      // Adjust start and end pages to be within bounds
+      let startPageAdjusted = Math.max(0, startPage - 1);
+      let endPageAdjusted = Math.min(endPage - 1, numberOfPages - 1);
+
+      // Create PDF for the specified page range
+      const rangePdfDoc = await PDFDocument.create();
+      for (let i = startPageAdjusted; i <= endPageAdjusted; i++) {
+        const [copiedPage] = await rangePdfDoc.copyPages(pdfDoc, [i]);
+        rangePdfDoc.addPage(copiedPage);
+      }
+      const rangePdfBytes = await rangePdfDoc.save();
+      pdfFiles.push({
+        fileName: "specified-pages.pdf",
+        fileUrl: URL.createObjectURL(
+          new Blob([rangePdfBytes], { type: "application/pdf" })
+        ),
       });
 
-      if (response.ok) {
-        const result = await response.json();
-        const splitFiles = result.map(({ fileName, fileData }) => {
-          const byteCharacters = atob(fileData);
-          const byteNumbers = new Array(byteCharacters.length);
-          for (let i = 0; i < byteCharacters.length; i++) {
-            byteNumbers[i] = byteCharacters.charCodeAt(i);
-          }
-          const byteArray = new Uint8Array(byteNumbers);
-          const blob = new Blob([byteArray], { type: "application/pdf" });
-          return {
-            fileName,
-            fileUrl: URL.createObjectURL(blob),
-          };
-        });
-        setSplitFiles(splitFiles);
-      } else {
-        console.error("Error splitting PDF");
+      // Create PDF for the remaining pages
+      const remainingPdfDoc = await PDFDocument.create();
+      for (let i = 0; i < numberOfPages; i++) {
+        if (i < startPageAdjusted || i > endPageAdjusted) {
+          const [copiedPage] = await remainingPdfDoc.copyPages(pdfDoc, [i]);
+          remainingPdfDoc.addPage(copiedPage);
+        }
       }
+      const remainingPdfBytes = await remainingPdfDoc.save();
+      pdfFiles.push({
+        fileName: "remaining-pages.pdf",
+        fileUrl: URL.createObjectURL(
+          new Blob([remainingPdfBytes], { type: "application/pdf" })
+        ),
+      });
+
+      setSplitFiles(pdfFiles);
     } catch (error) {
-      console.error("Error uploading file", error);
+      console.error("Error processing PDF", error);
     } finally {
       setLoading(false);
     }
