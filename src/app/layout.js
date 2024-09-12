@@ -25,7 +25,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="flex flex-col items-center justify-center min-h-screen bg-cover bg-center p-4 loading-background">
+      <body className="scroll-smooth flex flex-col items-center justify-center min-h-screen p-4 loading-background">
         <Header />
         {children}
       </body>

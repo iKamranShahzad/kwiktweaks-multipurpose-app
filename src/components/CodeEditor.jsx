@@ -76,7 +76,7 @@ const CodeEditor = () => {
           </label>
           <textarea
             id="code-editor"
-            className="block w-full text-sm text-black border rounded-lg py-2 px-4 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            className="scroll-smooth block w-full text-sm text-black border rounded-lg py-2 px-4 focus:outline-none focus:ring-2 focus:ring-indigo-500"
             rows={10}
             value={code}
             onChange={(e) => setCode(e.target.value)}
