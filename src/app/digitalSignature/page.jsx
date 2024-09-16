@@ -141,14 +141,14 @@ const SignatureCanvas = () => {
           <div className="mt-4 flex flex-col md:flex-row md:space-x-4 space-y-2 md:space-y-0">
             <button
               onClick={downloadSignature}
-              className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition-colors duration-300 w-full md:w-auto"
+              className="bg-indigo-600 hover:bg-green-600 text-white py-2 px-4 rounded-lg focus:outline-none transition-all duration-300 focus:shadow-outline"
               style={{ fontFamily: "Poppins, sans-serif" }}
             >
               Download Signature
             </button>
             <button
               onClick={clearCanvas}
-              className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition-colors duration-300 w-full md:w-auto"
+              className="bg-slate-700 hover:bg-red-500 text-white py-2 px-4 rounded-lg focus:outline-none transition-all duration-300 focus:shadow-outline"
               style={{ fontFamily: "Poppins, sans-serif" }}
             >
               Clear Canvas
