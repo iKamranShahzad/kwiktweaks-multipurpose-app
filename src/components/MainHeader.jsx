@@ -18,7 +18,7 @@ const optionsAudio = [
 const optionsPDF = [
   { value: "/pdfMerger", label: "Merge PDFs" },
   { value: "/split-pdf", label: "Split PDF" },
-  { value: "#", label: "Suboption 3" },
+  { value: "/watermark-pdf", label: "Watermark PDF" },
 ];
 
 export default function Header() {
