@@ -27,13 +27,15 @@ KwikTweaks is a versatile web application designed to streamline everyday digita
 - **Digital Signature Creation**: Draw your signature on a canvas and export it as a PNG, making it easy to use for documents and forms.
 - **QR Code Generator**: Create custom 1D and 2D QR codes effortlessly, perfect for sharing links or information.
 - **Code Snippet Screenshots**: Generate beautiful screenshots of code snippets in various programming languages for documentation or sharing.
-  
+
 ### Audio Tools
+
 - **Audio Trimming**: Cut audio files to your desired length with a user-friendly interface.
 - **Audio Speed Adjustment**: Change the playback speed of your audio files to suit your needs.
 - **Audio Merging**: Combine multiple audio files into a single track, perfect for creating playlists or podcasts.
 
 ### PDF Tools
+
 - **PDF Merging**: Combine multiple PDF documents into one cohesive file with just a few clicks.
 - **PDF Splitting**: Extract specific pages from a PDF, allowing you to manage large documents with ease.
 - **PDF Watermarking**: Add custom watermarks to your PDFs for branding or copyright purposes.

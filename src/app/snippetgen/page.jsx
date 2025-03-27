@@ -19,7 +19,7 @@ export default function SnippetGen() {
         </p>
       </div>
       <div className="w-full h-full p-4 md:p-6">
-        <div className="bg-gray-700 bg-opacity-25 p-4 md:p-6 rounded-lg shadow-lg w-full">
+        <div className="bg-gray-700/25 p-4 md:p-6 rounded-lg shadow-lg w-full">
           <CodeEditor />
         </div>
       </div>

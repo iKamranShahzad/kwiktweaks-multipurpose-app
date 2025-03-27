@@ -68,7 +68,7 @@ export default function PdfWatermarkTool() {
         description="This tool allows you to add a watermark to your PDF file. Upload your PDF and enter the watermark text."
       />
       <div className="flex-1 flex justify-center items-center p-4 md:p-6">
-        <div className="bg-gray-700 bg-opacity-25 p-4 md:p-6 rounded-lg shadow-lg w-full max-w-4xl">
+        <div className="bg-gray-700/25 p-4 md:p-6 rounded-lg shadow-lg w-full max-w-4xl">
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
               <label
@@ -88,7 +88,7 @@ export default function PdfWatermarkTool() {
                 file:mr-4 file:py-2 file:px-4
                 file:rounded-full file:border-0
                 file:text-sm hover:file:text-black
-                file:bg-white-700 file:text-blue-900
+                file:bg-white file:text-blue-900
                 hover:file:bg-gray-300
               "
               />
@@ -107,7 +107,7 @@ export default function PdfWatermarkTool() {
                 value={watermark}
                 onChange={handleWatermarkChange}
                 style={{ fontFamily: "Poppins, sans-serif" }}
-                className="block w-full text-sm text-black
+                className="bg-white block w-full text-sm text-black
                 p-2 border border-gray-300 rounded-md
                 focus:outline-none focus:ring-2 focus:ring-indigo-500
                 hover:bg-gray-100

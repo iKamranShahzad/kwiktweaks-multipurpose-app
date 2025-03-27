@@ -53,7 +53,7 @@ export default function SpeedAdjuster({ bufferToWaveBlob }) {
           can then preview and download the modified audio."
       />
       <div className="flex-1 flex justify-center items-center p-4 md:p-6">
-        <div className="bg-gray-700 bg-opacity-25 p-4 md:p-6 rounded-lg shadow-lg w-full max-w-4xl">
+        <div className="bg-gray-700/25 p-4 md:p-6 rounded-lg shadow-lg w-full max-w-4xl">
           <div className="mb-4">
             <label
               style={{ fontFamily: "Poppins, sans-serif" }}
@@ -71,7 +71,7 @@ export default function SpeedAdjuster({ bufferToWaveBlob }) {
               file:mr-4 file:py-2 file:px-4
               file:rounded-full file:border-0
               file:text-sm hover:file:text-black
-              file:bg-white-700 file:text-blue-900
+              file:bg-white file:text-blue-900
               hover:file:bg-gray-300
             "
             />

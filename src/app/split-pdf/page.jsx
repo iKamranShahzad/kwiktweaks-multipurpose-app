@@ -88,7 +88,7 @@ export default function PdfSplitterPage() {
         description="This tool allows you to split a PDF file into two parts based on the page numbers you specify. Upload your PDF, enter the start and end page numbers, and download the split PDFs."
       />
       <div className="flex-1 flex justify-center items-center p-4 md:p-6">
-        <div className="bg-gray-700 bg-opacity-25 p-4 md:p-6 rounded-lg shadow-lg w-full max-w-4xl">
+        <div className="bg-gray-700/25 p-4 md:p-6 rounded-lg shadow-lg w-full max-w-4xl">
           <h1
             style={{ fontFamily: "Poppins, sans-serif" }}
             className="text-2xl font-semibold mb-4 text-white"
@@ -112,7 +112,7 @@ export default function PdfSplitterPage() {
                 file:mr-4 file:py-2 file:px-4
                 file:rounded-full file:border-0
                 file:text-sm hover:file:text-black
-                file:bg-white-700 file:text-blue-900
+                file:bg-white file:text-blue-900
                 hover:file:bg-gray-300"
               />
             </div>
@@ -129,7 +129,7 @@ export default function PdfSplitterPage() {
                 name="startPage"
                 placeholder="Start Page"
                 min="1"
-                className="block w-full text-sm text-black
+                className="bg-white block w-full text-sm text-black
                 border border-gray-300 p-2 rounded-md"
               />
             </div>
@@ -146,7 +146,7 @@ export default function PdfSplitterPage() {
                 name="endPage"
                 placeholder="End Page"
                 min="1"
-                className="block w-full text-sm text-black
+                className="bg-white block w-full text-sm text-black
                 border border-gray-300 p-2 rounded-md"
               />
             </div>

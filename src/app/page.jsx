@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <div className="pt-20">
       {/* Added top padding to start below the header */}
-      <main className="w-full flex flex-col items-center max-w-5xl bg-gray-900 bg-opacity-50 text-white p-8 rounded-3xl shadow-lg backdrop-blur-md mx-auto">
+      <main className="w-full flex flex-col items-center max-w-5xl bg-gray-900/50 text-white p-8 rounded-3xl shadow-lg backdrop-blur-md mx-auto">
         <div className="text-center mb-12">
           <h1
             className="text-5xl font-extrabold mb-4"
@@ -22,7 +22,7 @@ export default function Home() {
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
-          <div className="p-8 rounded-xl bg-gray-800 shadow-lg bg-opacity-75 hover:bg-gray-950 hover:bg-opacity-30 transition-all flex flex-col items-center">
+          <div className="p-8 rounded-xl bg-gray-800/75 shadow-lg hover:bg-gray-950/30 transition-all flex flex-col items-center">
             <svg
               className="w-16 h-16 text-blue-400 mb-4"
               fill="none"
@@ -57,7 +57,7 @@ export default function Home() {
               Try Trimming Audio Files
             </Link>
           </div>
-          <div className="p-8 rounded-xl bg-gray-800 shadow-lg bg-opacity-75 hover:bg-gray-950 hover:bg-opacity-30 transition-all flex flex-col items-center">
+          <div className="p-8 rounded-xl bg-gray-800/75 shadow-lg hover:bg-gray-950/30 transition-all flex flex-col items-center">
             <svg
               className="w-16 h-16 text-green-400 mb-4"
               fill="none"
@@ -92,7 +92,7 @@ export default function Home() {
               Try Merging PDFs
             </Link>
           </div>
-          <div className="p-8 rounded-xl bg-gray-800 shadow-lg bg-opacity-75 hover:bg-gray-950 hover:bg-opacity-30 transition-all flex flex-col items-center">
+          <div className="p-8 rounded-xl bg-gray-800/75 shadow-lg hover:bg-gray-950/30 transition-all flex flex-col items-center">
             <svg
               className="w-16 h-16 text-yellow-400 mb-4"
               fill="none"

@@ -61,7 +61,7 @@ const BarcodeGenerator = () => {
           generating a 1D barcode (like Code 128) or a 2D barcode (QR Code)."
       />
       <div className="flex-1 flex justify-center items-center p-4 md:p-6">
-        <div className="bg-gray-700 bg-opacity-25 p-4 md:p-6 rounded-lg shadow-lg w-full max-w-4xl">
+        <div className="bg-gray-700/25  p-4 md:p-6 rounded-lg shadow-lg w-full max-w-4xl">
           <div className="mb-4">
             <label
               style={{ fontFamily: "Poppins, sans-serif" }}
@@ -77,7 +77,7 @@ const BarcodeGenerator = () => {
               onChange={handleInputChange}
               placeholder="Enter text or URL"
               style={{ fontFamily: "Poppins, sans-serif" }}
-              className="block w-full text-sm text-black border rounded-lg py-2 px-4 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="bg-white block w-full text-sm text-black border rounded-lg py-2 px-4 focus:outline-none focus:ring-2 focus:ring-indigo-500"
             />
           </div>
           <div className="mb-4">
@@ -93,7 +93,7 @@ const BarcodeGenerator = () => {
               value={barcodeType}
               onChange={handleBarcodeTypeChange}
               style={{ fontFamily: "Poppins, sans-serif" }}
-              className="block w-full text-sm text-black border rounded-lg py-2 px-4 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="bg-white block w-full text-sm text-black border rounded-lg py-2 px-4 focus:outline-none focus:ring-2 focus:ring-indigo-500"
             >
               <option value="QR Code">QR Code (2D)</option>
               <option value="Code 128">Code 128 (1D)</option>

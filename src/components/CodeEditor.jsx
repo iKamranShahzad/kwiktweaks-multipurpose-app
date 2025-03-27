@@ -46,7 +46,7 @@ const CodeEditor = () => {
           </label>
           <select
             id="language-select"
-            className="block w-full text-sm text-black border rounded-lg py-2 px-4 focus:outline-none focus:ring-2 focus:ring-indigo-500 mb-2"
+            className="bg-white block w-full text-sm text-black border rounded-lg py-2 px-4 focus:outline-none focus:ring-2 focus:ring-indigo-500 mb-2"
             value={language}
             onChange={(e) => setLanguage(e.target.value)}
           >
@@ -76,7 +76,7 @@ const CodeEditor = () => {
           </label>
           <textarea
             id="code-editor"
-            className="scroll-smooth block w-full text-sm text-black border rounded-lg py-2 px-4 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            className="bg-white scroll-smooth block w-full text-sm text-black border rounded-lg py-2 px-4 focus:outline-none focus:ring-2 focus:ring-indigo-500"
             rows={10}
             value={code}
             onChange={(e) => setCode(e.target.value)}

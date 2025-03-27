@@ -93,7 +93,7 @@ export default function AudioEditor({ audioBufferToWav }) {
         trimmed audio."
       />
       <div className="flex-1 flex justify-center items-center p-4 md:p-6">
-        <div className="bg-gray-700 bg-opacity-25 p-4 md:p-6 rounded-lg shadow-lg w-full max-w-4xl">
+        <div className="bg-gray-700/25 p-4 md:p-6 rounded-lg shadow-lg w-full max-w-4xl">
           <div className="mb-4">
             <label
               style={{ fontFamily: "Poppins, sans-serif" }}
@@ -108,11 +108,11 @@ export default function AudioEditor({ audioBufferToWav }) {
               accept="audio/mp3"
               onChange={handleFileUpload}
               style={{ fontFamily: "Poppins, sans-serif" }}
-              className="block w-full text-sm text-accent
+              className="block text-sm text-accent
             file:mr-4 file:py-2 file:px-4
             file:rounded-full file:border-0
-            file:text-sm  hover:file:text-black
-            file:bg-white-700 file:text-blue-900
+            file:text-sm hover:file:text-black
+            file:bg-white file:text-blue-900
             hover:file:bg-gray-300
           "
             />
@@ -170,7 +170,7 @@ export default function AudioEditor({ audioBufferToWav }) {
                         )
                       )
                     }
-                    className="shadow appearance-none border rounded w-full md:w-24 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    className="bg-white shadow appearance-none border rounded w-full md:w-24 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   />
                   <span>to</span>
                   <input
@@ -184,7 +184,7 @@ export default function AudioEditor({ audioBufferToWav }) {
                         )
                       )
                     }
-                    className="shadow appearance-none border rounded w-full md:w-24 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    className="bg-white shadow appearance-none border rounded w-full md:w-24 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   />
                 </div>
               </div>

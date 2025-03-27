@@ -1,66 +1,52 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import Link from "next/link";
-import Select from "react-select";
 
 export default function Navbar({ optionsTools, optionsAudio, optionsPDF }) {
-  const selectStyles = {
-    menu: (provided) => ({
-      ...provided,
-      backgroundColor: "#1f1f1f",
-      borderRadius: "0.375rem",
-      boxShadow: "0 2px 10px rgba(0, 0, 0, 0.2)",
-      fontFamily: "Poppins, sans-serif",
-      zIndex: 1000,
-    }),
-    option: (provided, state) => ({
-      ...provided,
-      backgroundColor: state.isSelected ? "#4a4a4a" : "#1f1f1f",
-      fontFamily: "Poppins, sans-serif",
-      color: "#fff",
-      "&:hover": {
-        backgroundColor: "#333",
-      },
-    }),
-    control: (provided) => ({
-      ...provided,
-      backgroundColor: "#1f1f1f",
-      fontFamily: "Poppins, sans-serif",
-      border: "1px solid #333",
-      color: "#fff",
-      boxShadow: "inset 0 1px 3px rgba(0, 0, 0, 0.6)",
-      "&:hover": {
-        borderColor: "#555",
-      },
-    }),
-    placeholder: (provided) => ({
-      ...provided,
-      color: "#888",
-      fontFamily: "Poppins, sans-serif",
-    }),
-    singleValue: (provided) => ({
-      ...provided,
-      color: "#fff",
-      fontFamily: "Poppins, sans-serif",
-    }),
-  };
-
   const [selectedTool, setSelectedTool] = useState(null);
   const [selectedAudio, setSelectedAudio] = useState(null);
   const [selectedPDF, setSelectedPDF] = useState(null);
-  const pathname = usePathname();
 
+  const [toolsOpen, setToolsOpen] = useState(false);
+  const [audioOpen, setAudioOpen] = useState(false);
+  const [pdfOpen, setPdfOpen] = useState(false);
+
+  const toolsRef = useRef(null);
+  const audioRef = useRef(null);
+  const pdfRef = useRef(null);
+
+  const pathname = usePathname();
   const router = useRouter();
 
-  const handleChange = (selectedOption, setFunction, resetFunctions) => {
-    if (selectedOption && selectedOption.value !== pathname) {
-      setFunction(selectedOption);
-      resetFunctions.forEach((reset) => reset(null));
-      if (selectedOption.value !== "#") {
-        router.push(selectedOption.value);
+  // Close dropdowns when clicking outside
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (toolsRef.current && !toolsRef.current.contains(event.target)) {
+        setToolsOpen(false);
+      }
+      if (audioRef.current && !audioRef.current.contains(event.target)) {
+        setAudioOpen(false);
+      }
+      if (pdfRef.current && !pdfRef.current.contains(event.target)) {
+        setPdfOpen(false);
       }
     }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  const handleSelect = (option, setFunction, resetFunctions, closeDropdown) => {
+    if (option && option.value !== pathname) {
+      setFunction(option);
+      resetFunctions.forEach((reset) => reset(null));
+      if (option.value !== "#") {
+        router.push(option.value);
+      }
+    }
+    closeDropdown(false);
   };
 
   const handleHomeClick = () => {
@@ -83,7 +69,67 @@ export default function Navbar({ optionsTools, optionsAudio, optionsPDF }) {
     setSelectedPDF(
       optionsPDF.find((option) => option.value === currentPath) || null
     );
-  }, [pathname]);
+  }, [pathname, optionsTools, optionsAudio, optionsPDF]);
+
+  // Custom dropdown component
+  const CustomDropdown = ({
+    options,
+    placeholder,
+    selectedOption,
+    isOpen,
+    setIsOpen,
+    onSelect,
+    dropdownRef,
+  }) => {
+    return (
+      <div ref={dropdownRef} className="relative w-full sm:w-40 md:w-44 z-30">
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="w-full px-3 py-2 flex justify-between items-center bg-[#1f1f1f] border border-[#333] rounded text-white shadow-md hover:border-[#555] transition-colors"
+        >
+          <span
+            className={`font-poppins ${!selectedOption ? "text-[#888]" : ""}`}
+          >
+            {selectedOption ? selectedOption.label : placeholder}
+          </span>
+          <svg
+            className={`w-4 h-4 transition-transform ${
+              isOpen ? "rotate-180" : ""
+            }`}
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M19 9l-7 7-7-7"
+            ></path>
+          </svg>
+        </button>
+
+        {isOpen && (
+          <div className="absolute w-full mt-1 rounded-md bg-[#1f1f1f] border border-[#333] shadow-lg max-h-60 overflow-auto z-50">
+            {options.map((option) => (
+              <div
+                key={option.value}
+                onClick={() => onSelect(option)}
+                className={`px-3 py-2 cursor-pointer hover:bg-[#333] ${
+                  selectedOption && selectedOption.value === option.value
+                    ? "bg-[#4a4a4a]"
+                    : ""
+                }`}
+              >
+                <span className="text-white font-poppins">{option.label}</span>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+    );
+  };
 
   return (
     <>
@@ -99,48 +145,57 @@ export default function Navbar({ optionsTools, optionsAudio, optionsPDF }) {
             className="w-52 h-auto sm:w-52 md:w-52 lg:w-64 transform hover:scale-110 transition-transform duration-300"
           />
         </Link>
+
         <nav className="flex flex-wrap items-center gap-4 sm:gap-6 md:gap-8 px-2 sm:px-4 mt-4 md:mt-0 relative z-10">
-          <Select
+          <CustomDropdown
             options={optionsTools}
-            className="w-full sm:w-40 md:w-44 shadow-md z-50"
-            classNamePrefix="select"
             placeholder="Utilities"
-            value={selectedTool}
-            onChange={(option) =>
-              handleChange(option, setSelectedTool, [
-                setSelectedAudio,
-                setSelectedPDF,
-              ])
+            selectedOption={selectedTool}
+            isOpen={toolsOpen}
+            setIsOpen={setToolsOpen}
+            dropdownRef={toolsRef}
+            onSelect={(option) =>
+              handleSelect(
+                option,
+                setSelectedTool,
+                [setSelectedAudio, setSelectedPDF],
+                setToolsOpen
+              )
             }
-            styles={selectStyles}
           />
-          <Select
+
+          <CustomDropdown
             options={optionsAudio}
-            className="w-full sm:w-40 md:w-44 shadow-md z-40"
-            classNamePrefix="select"
             placeholder="Audio Tools"
-            value={selectedAudio}
-            onChange={(option) =>
-              handleChange(option, setSelectedAudio, [
-                setSelectedTool,
-                setSelectedPDF,
-              ])
-            }
-            styles={selectStyles}
-          />
-          <Select
-            options={optionsPDF}
-            className="w-full sm:w-40 md:w-44 shadow-md z-30"
-            classNamePrefix="select"
-            placeholder="PDF Tools"
-            value={selectedPDF}
-            onChange={(option) =>
-              handleChange(option, setSelectedPDF, [
-                setSelectedTool,
+            selectedOption={selectedAudio}
+            isOpen={audioOpen}
+            setIsOpen={setAudioOpen}
+            dropdownRef={audioRef}
+            onSelect={(option) =>
+              handleSelect(
+                option,
                 setSelectedAudio,
-              ])
+                [setSelectedTool, setSelectedPDF],
+                setAudioOpen
+              )
             }
-            styles={selectStyles}
+          />
+
+          <CustomDropdown
+            options={optionsPDF}
+            placeholder="PDF Tools"
+            selectedOption={selectedPDF}
+            isOpen={pdfOpen}
+            setIsOpen={setPdfOpen}
+            dropdownRef={pdfRef}
+            onSelect={(option) =>
+              handleSelect(
+                option,
+                setSelectedPDF,
+                [setSelectedTool, setSelectedAudio],
+                setPdfOpen
+              )
+            }
           />
         </nav>
       </div>
